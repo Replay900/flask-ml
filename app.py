@@ -32,7 +32,7 @@ def predict():
     print(predicted_class)
     print(confidence)
 
-    return render_template('index.html', predictclass = predicted_class)
+    return render_template('index.html', predictclass = predicted_class,confidencem=confidence)
 
 if __name__ == "__main__":
     app.run(debug=True)
