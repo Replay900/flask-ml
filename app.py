@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 import numpy as np
 from PIL import Image
 import tensorflow as tf
@@ -41,6 +41,11 @@ def upload():
             return jsonify({"result": "Prediction: " + str(prediction)})
         except Exception as e:
             return jsonify({"error": str(e)}), 500
+
+# Route for serving static files (js, css, etc.)
+@app.route('/static/<path:path>')
+def serve_static(path):
+    return send_from_directory('static', path)
 
 if __name__ == "__main__":
     app.run(debug=True)
