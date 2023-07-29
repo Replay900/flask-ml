@@ -29,10 +29,15 @@ def predict():
     predicted_class = fruit_classes[np.argmax(predictions[0])]
     confidence = round(100 * (np.max(predictions[0])), 2)
 
+    if predicted_class=="apple_good":
+        prediccion="bien"
+    if predicted_class=="apple_bad":
+        prediccion="mal"
+
     print(predicted_class)
     print(confidence)
 
-    return render_template('index.html', predictclass = predicted_class,confidencem=confidence)
+    return render_template('index.html', predictclass = prediccion,confidencem=confidence)
 
 if __name__ == "__main__":
     app.run(debug=True)
