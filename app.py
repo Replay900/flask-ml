@@ -18,9 +18,9 @@ def process_image(file):
     return img
 
 # Route for the home page
-@app.route("/", method=['GET'])
+@app.route("/", methods=['GET'])
 def hello_world():
-    return 'Hello World'
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
