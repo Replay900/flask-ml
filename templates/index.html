@@ -7,6 +7,14 @@
     </head>
 
     <body>
-        <hl>Clasificador de Imágenes<hl>
+        <hl class="text-center">Clasificador de Manzanas<hl>
+        <form class="p-3 text-center" action="/", method="post" enctype="multipart/form-data">
+            <input class="form-control" type="file" name="imagefile">
+            <input class="btn btn-primary mt-3" type="submit" value="Predict Image">
+        </form>
+
+        {% if predictclass %}
+            <p class="text-center"> Image is a {{predictclass}}</p>
+        {% endif%}
     </body>
 </html>
