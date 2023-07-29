@@ -13,7 +13,7 @@ def hello_world():
 def predict():
     imagefile= request.files['imagefile']
     image_path = "./images" + imagefile.filename
-    imagefile.save[image_path]
+    imagefile.save(image_path)
 
     fruit_classes = ['apple_bad', 'apple_good', 'test']
 
