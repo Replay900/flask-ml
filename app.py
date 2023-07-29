@@ -18,34 +18,9 @@ def process_image(file):
     return img
 
 # Route for the home page
-@app.route("/")
-def index():
-    return render_template("upload.html")
-
-# Route for image upload and analysis
-@app.route("/upload", methods=["POST"])
-def upload():
-    if request.method == "POST":
-        if "file" not in request.files:
-            return jsonify({"error": "No file part"}), 400
-
-        file = request.files["file"]
-        if file.filename == "":
-            return jsonify({"error": "No selected file"}), 400
-
-        try:
-            image = process_image(file)
-            prediction = model.predict(image)
-            # Perform any post-processing on the prediction if needed
-
-            return jsonify({"result": "Prediction: " + str(prediction)})
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
-
-# Route for serving static files (js, css, etc.)
-@app.route('/static/<path:path>')
-def serve_static(path):
-    return send_from_directory('static', path)
+@app.route("/", method=['GET'])
+def hello_world():
+    return 'Hello World'
 
 if __name__ == "__main__":
     app.run(debug=True)
